@@ -1,0 +1,23 @@
+{
+  "name": "foodsbot-js",
+  "version": "0.1.0",
+  "description": "Foodsby and slack",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "adamv.stadler@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/web-api": "^5.13.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "ts-loader": "^8.0.11",
+    "typescript": "^4.0.5",
+    "webpack": "^5.4.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
