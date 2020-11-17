@@ -2,7 +2,6 @@ import fetch from 'node-fetch';
 import { DeliveryDay } from './DeliveryDay.types';
 
 export class FoodsbyService {
-    // https://www.foodsby.com/api-monolith/
     private api: URL;
     
     constructor(url: string, private location: number) {
