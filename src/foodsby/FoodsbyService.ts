@@ -16,8 +16,10 @@ export class FoodsbyService {
         ].join("");
     }
     
-    async fetchDailyMenu(date: Date = new Date()): Promise<DeliveryDay[]> {
+    async fetchDailyMenu(date: Date = new Date()): Promise<DeliveryDay> {
         const requestUrl = new URL(`${this.api.href}/schedule?day=${this.getFormattedDate(date)}&duration=1`);
-        return (await fetch(requestUrl)).json() as any;
+        const response = await fetch(requestUrl); 
+        const json = await response.json();
+        return json[0];
     }
 }
