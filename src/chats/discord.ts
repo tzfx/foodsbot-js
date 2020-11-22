@@ -18,6 +18,7 @@ export class DiscordService {
             .setTitle("🤖: Today's Foodsby choices are as follows:")
             .setColor('#0099ff');
 
+        deliveries.forEach((delivery) => {
             embed.addField(delivery.RestaurantName, `- Order by: ${delivery.Cutoff.replace(/:00$/, '')} \n - Delivery at: ${delivery.Dropoff.replace(/:00$/, '')}`);
         });
 
