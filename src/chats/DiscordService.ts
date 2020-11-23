@@ -1,8 +1,9 @@
 
 import { WebhookClient, MessageEmbed } from 'discord.js';
 import { Delivery } from '../foodsby/DeliveryDay.types';
+import { ChatService } from './ChatService.interface';
 
-export class DiscordService {
+export class DiscordService implements ChatService {
     private DISCORD_ID: string;
     private DISCORD_TOKEN: string;
 

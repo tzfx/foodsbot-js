@@ -1,8 +1,9 @@
 
 import { WebClient } from '@slack/web-api';
 import { Delivery } from '../foodsby/DeliveryDay.types';
+import { ChatService } from './ChatService.interface';
 
-export class SlackService {
+export class SlackService implements ChatService {
     private TOKEN: string;
     private CHANNEL: string;
 
