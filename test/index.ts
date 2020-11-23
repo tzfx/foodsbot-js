@@ -1,9 +1,9 @@
-require('dotenv').config()
-import { run } from '../src/main'
+require('dotenv').config();
+import { run } from '../src/main';
 
 async function start() {
-    let response = await run()
-    process.exit(response)
+    let response = await run();
+    process.exit(response);
 }
 
-start()
+start();

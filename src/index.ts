@@ -1,3 +1,3 @@
-import { run } from './main'
+import { run } from './main';
 
-exports.handler = run
+exports.handler = run;

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm run clean && webpack",
     "test": "npm run clean && tsc && node dist/test/index.js",
-    "format": "prettier --write **/*.ts",
+    "format": "prettier --write src/**/*.ts",
     "clean": "rm -rf dist"
   },
   "author": "adamv.stadler@gmail.com",
