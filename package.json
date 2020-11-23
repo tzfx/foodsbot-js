@@ -4,9 +4,10 @@
   "description": "Foodsby and slack",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack",
-    "test": "npm && tsc && node dist/test/index.js",
-    "format": "prettier --write **/*.ts"
+    "build": "npm run clean && webpack",
+    "test": "npm run clean && tsc && node dist/test/index.js",
+    "format": "prettier --write **/*.ts",
+    "clean": "rm -rf dist"
   },
   "author": "adamv.stadler@gmail.com",
   "license": "ISC",
