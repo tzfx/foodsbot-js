@@ -23,10 +23,14 @@ export const run = async function () {
         // Get the foodsby menu
         const foodsby = new FoodsbyService(FOODSBY, FOODSBY_LOCATION);
         const dailyMenu = await foodsby.fetchDailyMenu();
-        // send the menus out
-        await Promise.all(
-            services.map((service) => service.send(dailyMenu.Deliveries))
-        );
+        if (dailyMenu.Deliveries.length > 0) {
+            // send the menus out
+            await Promise.all(
+                services.map((service) => service.send(dailyMenu.Deliveries))
+            );
+        } else {
+            console.log('No deliveries scheduled for today.');
+        }
     } catch (err) {
         console.error(err);
         return 1;

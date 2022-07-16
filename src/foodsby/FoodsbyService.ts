@@ -8,8 +8,19 @@ export class FoodsbyService {
         this.api = new URL(`${url}/location/${location}`);
     }
 
+    // Prepend 0 if needed.
+    private pad0(num: String) {
+        return num.length === 1 ? '0' + num : num;
+    }
+
     private getFormattedDate(date: Date): string {
-        return [date.getFullYear(), date.getMonth(), date.getDate()].join('');
+        const [year, month, day] = [
+            date.getFullYear().toString(),
+            this.pad0((date.getMonth() + 1).toString()),
+            this.pad0(date.getDate().toString())
+        ];
+
+        return [year, month, day].join('');
     }
 
     async fetchDailyMenu(date: Date = new Date()): Promise<DeliveryDay> {
@@ -18,8 +29,7 @@ export class FoodsbyService {
                 date
             )}&duration=1`
         );
-        const response = await fetch(requestUrl);
-        const json = await response.json();
-        return json[0];
+        const response = await fetch(requestUrl).then((res) => res.json());
+        return response[0];
     }
 }
