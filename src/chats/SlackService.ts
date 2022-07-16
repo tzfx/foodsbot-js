@@ -1,6 +1,6 @@
 import { WebClient } from '@slack/web-api';
 import { Delivery } from '../foodsby/DeliveryDay.types';
-import { ChatService } from './ChatService.interface';
+import { ChatService, header, footer } from './ChatService.interface';
 
 export class SlackService implements ChatService {
     private TOKEN: string;
@@ -14,7 +14,7 @@ export class SlackService implements ChatService {
     async send(deliveries: Delivery[]) {
         const SLACK_CLIENT = new WebClient(this.TOKEN);
         await SLACK_CLIENT.chat.postMessage({
-            text: "🤖: Today's Foodsby choices are as follows:",
+            text: header,
             channel: this.CHANNEL
         });
         await Promise.all(
@@ -25,5 +25,9 @@ export class SlackService implements ChatService {
                 })
             )
         );
+        await SLACK_CLIENT.chat.postMessage({
+            text: footer,
+            channel: this.CHANNEL
+        });
     }
 }

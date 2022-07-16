@@ -22,7 +22,7 @@ export const run = async function () {
         if (services.length == 0) throw new Error('No Chats Defined');
         // Get the foodsby menu
         const foodsby = new FoodsbyService(FOODSBY, FOODSBY_LOCATION);
-        const dailyMenu = await foodsby.fetchDailyMenu();
+        const dailyMenu = await foodsby.fetchDailyMenu(new Date());
         if (dailyMenu.Deliveries.length > 0) {
             // send the menus out
             await Promise.all(

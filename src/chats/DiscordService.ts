@@ -1,6 +1,6 @@
 import { WebhookClient, MessageEmbed } from 'discord.js';
 import { Delivery } from '../foodsby/DeliveryDay.types';
-import { ChatService } from './ChatService.interface';
+import { ChatService, header, footer } from './ChatService.interface';
 
 export class DiscordService implements ChatService {
     private DISCORD_ID: string;
@@ -17,9 +17,7 @@ export class DiscordService implements ChatService {
             this.DISCORD_TOKEN
         );
 
-        const embed = new MessageEmbed()
-            .setTitle("🤖: Today's Foodsby choices are as follows:")
-            .setColor('#0099ff');
+        const embed = new MessageEmbed().setTitle(header).setColor('#0099ff');
 
         deliveries.forEach((delivery) => {
             embed.addField(
@@ -30,6 +28,8 @@ export class DiscordService implements ChatService {
                 )} \n - Delivery at: ${delivery.Dropoff.replace(/:00$/, '')}`
             );
         });
+
+        embed.setFooter(footer);
 
         await webhookClient.send('Webhook test', {
             username: 'Foodsby',

@@ -23,7 +23,7 @@ export class FoodsbyService {
         return [year, month, day].join('');
     }
 
-    async fetchDailyMenu(date: Date = new Date()): Promise<DeliveryDay> {
+    async fetchDailyMenu(date: Date): Promise<DeliveryDay> {
         const requestUrl = new URL(
             `${this.api.href}/schedule?day=${this.getFormattedDate(
                 date
